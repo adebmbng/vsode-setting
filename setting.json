@@ -1,0 +1,103 @@
+{
+    "go.autocompleteUnimportedPackages": true,
+    "go.useLanguageServer": true,
+    "go.alternateTools": {
+        "go-langserver": "gopls",
+        "gopls": "gopls"
+    },
+    "go.lintOnSave": "package",
+    // "go.formatTool": "gofmt",
+    "go.lintTool":"golangci-lint",
+    "go.lintFlags": [
+        "--fast",
+        "-E", "goimports",
+        "-E", "gocritic",
+        "-E", "gocyclo",
+        "-E", "gosec",
+        "-E", "maligned",
+        "-E", "scopelint",
+        "-E", "interfacer",
+        "-E", "goconst",
+        "-E", "unconvert",
+        "-E", "unparam",
+        "-E", "prealloc",
+        "-E", "varcheck"
+    ],
+    "go.formatTool": "goimports",
+    "go.formatOnSave": true,
+    // "go.lintTool": "golint",
+    "[go]": {
+        "editor.snippetSuggestions": "none",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
+    "go.languageServerExperimentalFeatures": {
+        "format": true,
+        "autoComplete": true,
+        "rename": true,
+        "goToDefinition": true,
+        "hover": true,
+        "signatureHelp": true,
+        "goToTypeDefinition": true,
+        "goToImplementation": true,
+        "documentSymbols": true,
+        "workspaceSymbols": true,
+        "findReferences": true,
+        "diagnostics": true,
+        "completeUnimported ": true,
+        "deepCompletion": true,
+        "matcher": "CaseSensitive"
+    },
+    "gopls": {
+        "usePlaceholders": true,
+        "completeUnimported": true,
+        "deepCompletion": true,
+        "matcher": "CaseSensitive"
+    },
+    "[go.mod]": {
+        "editor.formatOnSave": true,
+        "editor.snippetSuggestions": "bottom",
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
+    "go.languageServerFlags": [
+        "-rpc.trace", // for more detailed debug logging
+        "serve",
+        "--debug=localhost:6060" // to investigate memory usage, see profiles 
+    ],
+    "files.eol": "\n", // formatting only supports LF line endings
+    "go.goroot": "/usr/local/go",
+    "go.gopath": "/home/debam/go",
+    "go.useCodeSnippetsOnFunctionSuggest": true,
+    "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
+    "go.coverOnTestPackage": false,
+    "go.delveConfig": {
+        "dlvLoadConfig": {
+            "followPointers": true,
+            "maxVariableRecurse": 1,
+            "maxStringLen": 64,
+            "maxArrayValues": 64,
+            "maxStructFields": -1
+        },
+        "apiVersion": 2,
+        "showGlobalVariables": false
+    },
+    "files.autoSave": "onFocusChange",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "emmet.excludeLanguages": [
+        "markdown"
+    ],
+    "workbench.colorTheme": "Visual Studio Dark",
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.formatOnSave": true,
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+}
