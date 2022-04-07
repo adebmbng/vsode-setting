@@ -1,131 +1,90 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
+zmodload zsh/zprof
 export ZSH="/Users/dbm/.oh-my-zsh"
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-
+ZSH_THEME="amuse"
+plugins=(git kubectl docker docker-compose npm colorize zsh-syntax-highlighting zsh-autosuggestions fzf)
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+# timezsh() {
+#   shell=${1-$SHELL}
+#   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
+# }
 
-# export MANPATH="/usr/local/man:$MANPATH"
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export FZF_BASE=/opt/homebrew/bin/fzf
+export PATH=/usr/local/bin:$PATH
+export PATH=/opt/homebrew/bin:$PATH
+export ROGU_KEY_PATH="$HOME/.config/gcloud/application_default_credentials.json"
+export GOPATH=$HOME/go
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin:$HOME/.jetbrain:/Users/dbm/Library/Android/sdk/platform-tools"
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
+export ANDROID_HOME=~/Library/Android/sdk
+export ANDROID_SDK_ROOT=~/Library/Android/sdk
+export ANDROID_AVD_HOME=~/.android/avd
+export GOKU_ENDPOINT="http://goku-id-prod-cluster.rg.internal"
+export GOOGLE_APPLICATION_CREDENTIALS=~/.rogu/key-prod.json
+export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1
+export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
+export GRACE_ENDPOINT=http://172.16.1.19/grace
+export KUBECONFIG=/Users/dbm/Projects/infrastructure/digitalocean/kubeconfigs/k8s-1-19-12-do-0-sgp1-1627272976486-kubeconfig.yaml
+# export KUBECONFIG=/Users/dbm/Projects/infra-sim/digitalocean/doks-sim-main-1-kubeconfig.yaml
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-export GOROOT="/usr/local/go"
-export GOPATH="$HOME/go"
-export PATH="/usr/local/bin:$HOME/go/bin:$PATH"
-
-alias cdb_skill_prod_user="cockroach sql --url 'postgresql://eduforall:PiNt4rS3kaLi@172.20.1.16:26257/skillacademy_users?sslmode=require'"
-alias cdb_skill_prod="cockroach sql --url 'postgresql://skillacademy:u8knOHeYQxbDQyey@cockroach-prod-id-sa.cockroach-prod-id-sa.il4.asia-southeast1.lb.silicon-airlock-153323.internal:26257/defaultdb?sslmode=require'"
-
-alias gbr="git branch | grep -v "master" | xargs git branch -D"
-
-alias kpod='f() { kubectl get pods -lserviceName=$1 -n $2};f'
-alias klog='f() { kubectl logs $3 -n $1 -c $2 -f};f'
+# # alias kpod='f() { kubectl get pods -lserviceName=$1 -n $2};f'
+# # alias klog='f() { kcrg logs $3 -n $1 -c $2 -f};f'
+alias dbp='f() { docker build . -t $1 && docker push $1 };f'
 alias kcrg='kubectl --context gke_silicon-airlock-153323_asia-southeast1-a_ruangguru-k8s'
 alias kcid='kubectl --context gke_silicon-airlock-153323_asia-southeast1_ase1-id-prod-1'
 alias kcgl='kubectl --context gke_silicon-airlock-153323_asia-southeast1_ase1-glo-infra-1'
-
-alias ga="git add ."
-alias gp="git push origin"
-alias gc="git commit -m"
-alias gco="git checkout"
-alias gpm="git pull origin master"
+alias kcucrg='kubectl config use-context gke_silicon-airlock-153323_asia-southeast1-a_ruangguru-k8s --namespace=production'
+alias kcucgl='kubectl config use-context gke_silicon-airlock-153323_asia-southeast1_ase1-glo-infra-1'
+alias kcucid='kubectl config use-context gke_silicon-airlock-153323_asia-southeast1_ase1-id-prod-1 --namespace=production'
+alias kcucth='kubectl config use-context gke_silicon-airlock-153323_asia-southeast1_ase1-th-prod-1 --namespace=th-production'
+alias kcucvn='kubectl config use-context gke_silicon-airlock-153323_asia-southeast1_ase1-vn-prod-1 --namespace=vn-production'
 alias gs="git status"
-source /Users/dbm/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-alias rg="cd ~/go/src/gitlab.com/ruangguru/source"
+alias rg="cd ~/go/src/gitlab.com/ruangguru"
+alias rgs="cd ~/go/src/gitlab.com/ruangguru/source"
+alias pubsub-emulator="gcloud beta emulators pubsub start --project=silicon-airlock-153323"
+alias java8='export JAVA_HOME=$JAVA_8_HOME'
+alias ssh-devbox="ssh debam@172.16.0.26"
+alias dsim="docker --config ~/.dockersim"
 
-alias pubsub="gcloud beta emulators pubsub start --project=silicon-airlock-153323"
+source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/dbm/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/dbm/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/dbm/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/dbm/google-cloud-sdk/completion.zsh.inc'; fi
+
+# # export PUBSUB_EMULATOR_HOST=localhost:8085
+# # export PUBSUB_PROJECT_ID=silicon-airlock-153323
+# # export GOOGLE_APPLICATION_CREDENTIALS=~/.rogu/gcs-key.json
+
+nvm(){
+    export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+}
+
+conda() {
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/Users/dbm/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/Users/dbm/miniconda3/etc/profile.d/conda.sh" ]; then
+            . "/Users/dbm/miniconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/Users/dbm/miniconda3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    # <<< conda initialize <<<
+}
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+export DYLD_LIBRARY_PATH="/usr/local/mysql/lib:$PATH"
