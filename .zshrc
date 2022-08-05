@@ -15,6 +15,6 @@ export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 export KUBECONFIG=/Users/dbm/projects/sim/kubernetes/kubeconfig.yaml
 export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/python@3.8/lib"
-export PATH="/usr/local/opt/mysql-client/bin:$PATH"
-export PATH="/usr/local/opt/php@7.4/bin:$PATH"
-export PATH="/usr/local/opt/php@7.4/sbin:$PATH"
+
+export PATH="$PATH:/Users/dbm/Library/Application Support/JetBrains/Toolbox/scripts"
+eval "$(/opt/homebrew/bin/brew shellenv)"
